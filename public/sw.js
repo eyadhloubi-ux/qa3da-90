@@ -1,5 +1,5 @@
-const C="qa3da90-v1";
-const FILES=["./","index.html","manifest.webmanifest","icon-192.png","icon-512.png",
+const C="qa3da90-v2";
+const FILES=["./","index.html","manifest.webmanifest","icon-192.png","icon-512.png","qrcode.js",
 "fonts/ibm-plex-sans-arabic-arabic-400-normal.woff2","fonts/ibm-plex-sans-arabic-arabic-500-normal.woff2","fonts/ibm-plex-sans-arabic-arabic-700-normal.woff2",
 "fonts/ibm-plex-sans-arabic-latin-400-normal.woff2","fonts/ibm-plex-sans-arabic-latin-500-normal.woff2","fonts/ibm-plex-sans-arabic-latin-700-normal.woff2"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(FILES)));self.skipWaiting()});

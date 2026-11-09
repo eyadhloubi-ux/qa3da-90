@@ -9,3 +9,10 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20
+    # لما تنقل للخطة المدفوعة حتى ما تنمسح المعطيات: غيّر plan لـ starter وشيل # من الأسطر الجاية
+    #   - key: DATA_DIR
+    #     value: /var/data
+    # disk:
+    #   name: qa3da-90-data
+    #   mountPath: /var/data
+    #   sizeGB: 1

@@ -89,6 +89,48 @@ svg{display:block;width:100%;height:auto}
 .tick.guard{border-color:var(--z4);color:var(--z4);font-size:15px}
 .add{border:1.5px dashed var(--line);border-radius:20px;padding:14px;text-align:center;color:var(--muted);cursor:pointer;margin-top:4px}
 .empty{text-align:center;padding:30px 10px}
+/* الشراكات */
+.pbtn{position:relative}
+.pbtn .bd{position:absolute;top:-4px;left:-4px;min-width:17px;height:17px;border-radius:9px;background:var(--z4);color:#fff;font-size:10.5px;display:grid;place-items:center;padding:0 4px}
+.prow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.prow:last-child{border-bottom:0}
+.av{width:34px;height:34px;border-radius:50%;color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+.prow .pi{flex:1;min-width:0}.prow .pi b{font-size:14px;display:block}.prow .pi small{font-size:12px;color:var(--muted)}
+.prow .pr{text-align:left;font-size:12px;flex:none}
+.prow .pr b{display:block;font-size:16px}
+.bar{height:7px;border-radius:4px;background:var(--line);margin-top:5px;overflow:hidden;display:flex;justify-content:flex-start}
+.bar i{display:block;height:100%;border-radius:4px}
+.d7{display:flex;gap:3px;margin-top:5px}.d7 i{width:9px;height:9px;border-radius:3px;background:var(--line)}.d7 i.y{background:var(--z4)}.d7 i.n{background:var(--z1);opacity:.6}
+.trend{font-size:11.5px;padding:1px 8px;border-radius:10px;display:inline-block;margin-top:3px}
+.verdict{font-size:13.5px;background:var(--soft);border-radius:12px;padding:9px 12px;margin-top:8px}
+.inv{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;border:1px dashed var(--line);border-radius:12px;padding:7px 10px;margin-top:6px}
+.inv code{font-family:"IBM Plex Sans Arabic",monospace;font-weight:700;letter-spacing:3px;font-size:14px}
+.gopt{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.gopt button{padding:12px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);cursor:pointer;font-size:15px}
+.gopt button.on{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.codebig{font-size:34px;font-weight:700;letter-spacing:10px;text-align:center;direction:ltr;margin:6px 0}
+#qrBox{width:180px;margin:8px auto;background:#fff;padding:10px;border-radius:14px}
+#qrBox canvas{width:100%;display:block}
+.codein{text-align:center;letter-spacing:12px;font-size:26px!important;font-weight:700;direction:ltr;text-transform:uppercase}
+.invcard{text-align:center;padding:22px 16px}
+.invcard .hn{font-size:24px;font-weight:700;margin:6px 0 2px}
+/* السجل */
+.cal{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin:10px 0}
+.cell{aspect-ratio:1;border-radius:8px;display:grid;place-items:center;font-size:11px;cursor:pointer;border:1.5px solid transparent;position:relative;user-select:none}
+.cell.y{color:#fff;font-weight:700}
+.cell.n{background:transparent;border-color:var(--z1);color:var(--z1)}
+.cell.n::after{content:"×";position:absolute;font-size:16px;opacity:.35}
+.cell.e{border:1.5px dashed var(--muted);color:var(--muted)}
+.cell.f{background:var(--soft);color:var(--muted);opacity:.55;cursor:default}
+.cell.t{box-shadow:0 0 0 2px var(--ink)}
+.cell.ms{outline:2px solid var(--ink);outline-offset:1px}
+.tabs{display:flex;gap:6px;overflow:auto;padding-bottom:4px}
+.tabs button{flex:none;padding:6px 14px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;font-size:13px}
+.tabs button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11.5px;color:var(--muted);justify-content:center}
+.leg i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-left:4px;vertical-align:middle}
+.arcbtn{cursor:pointer}
+.net{font-size:11.5px;color:var(--muted);text-align:center;margin-top:4px}
 .bigarc{margin:4px 0 12px}
 
 /* معالج الإضافة */
@@ -192,7 +234,7 @@ input[type=range]{width:100%;accent-color:var(--z3)}
 <!-- ========== الرئيسية ========== -->
 <section id="home" class="screen">
   <div class="top">
-    <span style="width:38px"></span>
+    <button class="ib pbtn" onclick="go('partners')" title="شراكاتي" aria-label="شراكاتي"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><circle cx="16.5" cy="9.5" r="2.6"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><path d="M14.5 14.3c.6-.2 1.3-.3 2-.3 2.2 0 3.9 1.4 4.4 4"/></svg><span class="bd" id="pBadge" style="display:none"></span></button>
     <div class="ttl">قعدة 90</div>
     <button class="ib" onclick="openHelp()">؟</button>
   </div>
@@ -213,6 +255,28 @@ input[type=range]{width:100%;accent-color:var(--z3)}
 </section>
 
 <!-- ========== التفاصيل ========== -->
+<section id="me" class="screen">
+  <div class="top"><span style="width:38px"></span><div class="ttl">قعدة 90</div><button class="ib" onclick="openHelp()">؟</button></div>
+  <div class="wiz-wrap" id="meBody"></div>
+</section>
+
+<section id="join" class="screen">
+  <div class="top"><button class="ib" onclick="leaveJoin()">→</button><div class="ttl">دعوة شراكة</div><button class="ib" onclick="openHelp()">؟</button></div>
+  <div class="wiz-wrap" id="joinBody"></div>
+</section>
+
+<section id="partners" class="screen">
+  <div class="top"><button class="ib" onclick="go('home')">→</button><div class="ttl">شراكاتي</div><button class="ib" onclick="openHelp()">؟</button></div>
+  <div id="partnersBody"></div>
+  <div class="sig">إعداد م. إياد حلوبي</div>
+</section>
+
+<section id="history" class="screen">
+  <div class="top"><button class="ib" onclick="openDetail(curId)">→</button><div class="ttl" id="hTitle">سجل الأيام</div><button class="ib" onclick="openHelp()">؟</button></div>
+  <div class="wiz-wrap" id="historyBody"></div>
+  <div class="sig">إعداد م. إياد حلوبي</div>
+</section>
+
 <section id="detail" class="screen">
   <div class="top">
     <button class="ib" onclick="go('home')">→</button>
@@ -242,6 +306,7 @@ input[type=range]{width:100%;accent-color:var(--z3)}
 <input type="file" id="fileIn" accept="image/*" hidden>
 <input type="file" id="camIn" accept="image/*" capture="user" hidden>
 
+<script src="qrcode.js"></script>
 <script>
 const LAYOUT="shared"; // cards | shared
 const IG="https://www.instagram.com/eyad.hloubi";
@@ -258,9 +323,41 @@ function Z(i){return cssv("--z"+i)}
 
 /* ---------- الحالة ---------- */
 let S;
+const ONLINE=location.protocol.startsWith("http");
 function load(){try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
-  if(!S)S={habits:[],offset:0,seen:false,theme:"light"}}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+  if(!S)S={habits:[],offset:0,seen:false,theme:"light",me:null}}
+function saveLocal(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function save(){saveLocal();schedSync()}
+/* ---------- السيرفر ---------- */
+async function api(path,body){const r=await fetch(path,{method:body?"POST":"GET",headers:{"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined});
+  let j={};try{j=await r.json()}catch(e){}
+  if(!r.ok){const e=new Error(j.error||"net");e.data=j;e.status=r.status;throw e}return j}
+let syncT,syncing=false,syncAgain=false,netOK=true;
+function schedSync(){if(!ONLINE||!S.me)return;clearTimeout(syncT);syncT=setTimeout(sync,500)}
+async function ensureToken(){if(!ONLINE||!S.me||S.me.token)return!!(S.me&&S.me.token);
+  try{const j=await api("/api/register",{name:S.me.name,gender:S.me.gender});Object.assign(S.me,j);saveLocal();return true}catch(e){return false}}
+async function sync(){if(!ONLINE||!S.me)return;if(syncing){syncAgain=true;return}syncing=true;
+  try{if(!await ensureToken())throw new Error("reg");
+    const mine=S.habits.map(h=>({id:h.id,create:!h.synced,meta:(!h.synced||h.owner===S.me.uid)?{name:h.name,type:h.type,triggers:h.triggers,alt:h.alt}:null,
+      me:{start:h.start,log:h.log,ms:h.ms,gw:h.gw,notice:h.notice,color:h.color}}));
+    const j=await api("/api/sync",{token:S.me.token,mine});merge(j);netOK=true}
+  catch(e){netOK=false;
+    // السيرفر انمسح (الخطة المجانية): منسجّل من جديد ومنرجّع عاداتنا بلا ما يضيع شي
+    if(e.status===401){S.me.token=null;S.me.uid=null;S.habits.forEach(h=>{h.synced=false;h.owner=null;h.partners=[];h.invites=[]});saveLocal();syncAgain=true}}
+  syncing=false;if(syncAgain){syncAgain=false;schedSync()}}
+function merge(j){Object.assign(S.me,{uid:j.me.uid,name:j.me.name,gender:j.me.gender});const seen=new Set();
+  j.habits.forEach(sv=>{seen.add(sv.id);const meM=sv.members.find(m=>m.uid===S.me.uid)||{};let h=S.habits.find(x=>x.id===sv.id);
+    if(!h){h={id:sv.id,start:meM.start||today(),log:meM.log||{},ms:meM.ms||[],gw:meM.gw||{},color:meM.color||HCOL[0],notice:meM.notice||null,when:""};S.habits.push(h);h._new=true}
+    Object.assign(h,{name:sv.name,type:sv.type,triggers:sv.triggers||[],alt:sv.alt||"",owner:sv.owner,synced:true,
+      partners:sv.members.filter(m=>m.uid!==S.me.uid),invites:sv.invites||[]})});
+  S.habits=S.habits.filter(h=>seen.has(h.id)||!h.synced);saveLocal();quietRefresh()}
+function quietRefresh(){if($("#ov").classList.contains("on"))return;const on=(document.querySelector(".screen.on")||{}).id;
+  if(on==="home")renderHome(true);else if(on==="detail")renderDetail(true);else if(on==="partners")renderPartners();else if(on==="history")renderHistory()}
+setInterval(()=>{if(document.visibilityState==="visible")sync()},30000);
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")sync()});
+/* ---------- المذكر والمؤنث ---------- */
+const G=(g,m,f)=>g==="f"?f:m;
+function initial(n){return (String(n||"؟").trim()[0]||"؟")}
 function today(){const d=new Date();d.setDate(d.getDate()+(S.offset||0));return ymd(d)}
 function ymd(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
 function addDays(s,n){const d=new Date(s+"T12:00:00");d.setDate(d.getDate()+n);return ymd(d)}
@@ -304,7 +401,7 @@ function drawArc(svg,o){
         el("path",{d:annulus(r1,r2),fill:z[i],stroke:gap,"stroke-width":2.5},g)}
       // حافة مضيئة عند حدود التقدّم
       el("path",{d:`M${cx-rp},${cy} A${rp},${rp} 0 0 1 ${cx+rp},${cy}`,fill:"none",stroke:z[zoneOf(pp)],"stroke-width":3,opacity:.5},g);
-      el("circle",{cx,cy:cy-rp,r:o.mini?13:9,fill:z[zoneOf(pp)],stroke:gap,"stroke-width":o.mini?4:3,class:final?"pulse":""},g)};
+      if(!o.people)el("circle",{cx,cy:cy-rp,r:o.mini?13:9,fill:z[zoneOf(pp)],stroke:gap,"stroke-width":o.mini?4:3,class:final?"pulse":""},g)};
     if(o.anim){const fp=o.from!=null?o.from:0,t0=performance.now(),D=1300;
       const step=now=>{const k=Math.min(1,(now-t0)/D),e=1-Math.pow(1-k,3);paint(fp+(p-fp)*e,k>=1);if(k<1)requestAnimationFrame(step)};paint(fp,false);requestAnimationFrame(step)}
     else paint(p,true);
@@ -317,7 +414,14 @@ function drawArc(svg,o){
     el("text",{x:cx,y:cy-46,"text-anchor":"middle","font-size":11,fill:cssv("--muted"),"font-family":"IBM Plex Sans Arabic"},svg,"العادة صارت جزء من راحتك")}
   const dot=(x,y,col,lab)=>{el("circle",{cx:x,cy:y,r:o.mini?13:9,fill:col,stroke:gap,"stroke-width":o.mini?4:3,class:"pulse"},svg);
     if(lab)el("text",{x,y:y-15,"text-anchor":"middle","font-size":11,"font-weight":700,fill:col,"font-family":"IBM Plex Sans Arabic"},svg,lab)};
-  if(o.single&&p<1)dot(cx,cy-20,z[0]);
+  if(o.people){const n=o.people.length;o.people.forEach((m,i)=>{const ang=n===1?90:160-i*(140/(n-1));const[x,y]=pol(progR(m.prog),ang);const[lx,ly]=pol(204,ang);
+      el("line",{x1:x,y1:y,x2:lx,y2:ly,stroke:m.color,"stroke-width":1.5,"stroke-dasharray":"3 3"},svg);
+      el("circle",{cx:x,cy:y,r:11,fill:m.color,stroke:gap,"stroke-width":3,class:m.me?"pulse":""},svg);
+      el("text",{x,y:y+4,"text-anchor":"middle","font-size":11,"font-weight":700,fill:"#fff","font-family":"IBM Plex Sans Arabic"},svg,initial(m.label));
+      const t=m.label+" · "+m.prog,tw=Math.min(120,18+t.length*6.6),bx=Math.max(-28,Math.min(348-tw,lx-tw/2)),by=ly-12;
+      el("rect",{x:bx,y:by,width:tw,height:22,rx:11,fill:m.color},svg);
+      el("text",{x:bx+tw/2,y:by+15,"text-anchor":"middle","font-size":11.5,"font-weight":700,fill:"#fff","font-family":"IBM Plex Sans Arabic"},svg,t)})}
+  if(o.single&&p<1&&!o.people)dot(cx,cy-20,z[0]);
   if(o.single&&done)dot(...pol(172,90),z[4]);
   if(o.multi){const n=o.multi.length;o.multi.forEach((m,i)=>{const ang=n===1?90:155-i*(130/(n-1));const[x,y]=pol(progR(m.prog),ang);
       // خط دليل من النقطة لبرّا الدايرة مع لصاقة واضحة
@@ -345,9 +449,22 @@ function hseed(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))|0;return h}
 
 /* ---------- تنقّل ---------- */
 let curId=null;
-function go(id){clearInterval(coverT);document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));$("#"+id).classList.add("on");window.scrollTo(0,0);
+function go(id){clearInterval(coverT);if(id==="partners")setTimeout(renderPartners,0);document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));$("#"+id).classList.add("on");window.scrollTo(0,0);
   if(id==="home")renderHome();if(id==="cover")renderCover()}
-function startApp(){S.seen=true;save();go(S.habits.length?"home":"new");if(!S.habits.length)wizStart()}
+function startApp(){S.seen=true;saveLocal();if(!S.me){renderMe();go("me");return}
+  if(S.pendingInvite){openJoin();return}
+  go(S.habits.length?"home":"new");if(!S.habits.length)wizStart()}
+/* ---------- التعريف ---------- */
+let MEg=null;
+function renderMe(){MEg=null;$("#meBody").innerHTML=`<p class="step-h">عرّفنا عليك</p>
+  <p class="muted" style="font-size:13.5px">${S.pendingInvite?"وصلتك دعوة شراكة. عرّفنا عليك أول ليشوفك شريكك.":"اسمك بيطلع لشركائك لما تشارك حدا بعادة."}</p>
+  <span class="lbl">اسمك</span><input type="text" id="meName" maxlength="24" placeholder="اكتب اسمك" oninput="meValid()">
+  <span class="lbl">شب ولا صبية؟</span><div class="gopt"><button onclick="MEg='m';meValid(this)">شب</button><button onclick="MEg='f';meValid(this)">صبية</button></div>
+  <button class="btn" id="meOk" disabled onclick="saveMe()">يلا</button>`}
+function meValid(b){if(b){b.parentNode.querySelectorAll("button").forEach(x=>x.classList.remove("on"));b.classList.add("on")}
+  $("#meOk").disabled=!($("#meName").value.trim()&&MEg)}
+async function saveMe(){S.me={name:$("#meName").value.trim(),gender:MEg,uid:null,token:null};saveLocal();
+  $("#meOk").disabled=true;await ensureToken();if(S.me.token)sync();startApp()}
 function toast(t){const e=$("#toast");e.textContent=t;e.style.display="block";clearTimeout(e._t);e._t=setTimeout(()=>e.style.display="none",2200)}
 function toggleTheme(){S.theme=S.theme==="dark"?"light":"dark";applyTheme();save();
   const on=document.querySelector(".screen.on").id;const keep=$("#ov").classList.contains("on");if(on==="home"){renderHome();if(keep)clearTimeout(window._mc)}if(on==="detail")renderDetail();if(on==="cover")renderCover();if(on==="story"&&SG.step===1)drawStory($("#storyPrev"))}
@@ -363,7 +480,8 @@ function habitState(h){const c=calc(h);const t=today();const z=zoneOf(c.prog);
   const doneToday=!!(h.log[t]&&h.log[t].done);
   const guard=h.type==="neg"&&c.prog>=90;
   return{...c,z,doneToday,guard}}
-function renderHome(){clearInterval(coverT);const b=$("#homeBody");
+function renderHome(quiet){clearInterval(coverT);const b=$("#homeBody");
+  const ns=S.habits.filter(h=>(h.partners||[]).length).length;const bd=$("#pBadge");if(bd){bd.style.display=ns?"grid":"none";bd.textContent=ns}
   if(!S.habits.length){b.innerHTML=`<div class="empty card"><p style="font-size:16px;font-weight:700">ما في عادات لسا</p><p class="muted" style="font-size:14px;margin:6px 0 14px">اختار عادة وحدة لتبلّش. أقصى شي 3 عادات بنفس الوقت.</p><button class="btn" onclick="go('new');wizStart()">أضف عادة</button></div>`;return}
   let html=`<p class="hello">${greet()} · ${S.habits.length} من 3 عادات</p>`;
   if(LAYOUT==="shared"){html+=`<div class="card bigarc"><svg id="sharedArc" viewBox="-24 -40 368 242"></svg><div id="sharedLeg" style="display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:12px;margin-top:6px"></div></div>`}
@@ -374,7 +492,7 @@ function renderHome(){clearInterval(coverT);const b=$("#homeBody");
       :`<button class="tick ${st.doneToday?'done':''}" onclick="event.stopPropagation();checkToday('${h.id}')">✓</button>`;
     html+=`<div class="hcard" onclick="openDetail('${h.id}')">
       ${LAYOUT==="cards"?`<div class="mini"><svg viewBox="-22 -4 364 206" id="mini_${h.id}"></svg></div>`:""}
-      <div class="info"><b>${LAYOUT==="shared"?`<span class="dot" style="background:${h.color};width:20px;height:20px;color:#fff;font-size:11px;text-align:center;line-height:20px">${i+1}</span>`:""}${esc(h.name)}</b><small>${h.type==="neg"?"عادة بتركها":"عادة ببنيها"}</small><small>${sub}</small></div>${tk}</div>`});
+      <div class="info"><b>${LAYOUT==="shared"?`<span class="dot" style="background:${h.color};width:20px;height:20px;color:#fff;font-size:11px;text-align:center;line-height:20px">${i+1}</span>`:""}${esc(h.name)}</b><small>${h.type==="neg"?"عادة بتركها":"عادة ببنيها"}${(h.partners||[]).length?` · مع ${esc(h.partners.map(m=>m.name).join("، "))}`:""}</small><small>${sub}</small></div>${tk}</div>`});
   if(S.habits.length<3)html+=`<div class="add" onclick="go('new');wizStart()">+ أضف عادة</div>`;
   html+=`<button class="btn ghost sm" style="margin-top:10px" onclick="openStory('ALL',null)">شارك تقدّمك بكل العادات</button>`;
   if(LAYOUT==="shared")html=html.replace('<div class="card bigarc">','<div class="homegrid"><div class="card bigarc">')+`</div></div>`;
@@ -382,7 +500,7 @@ function renderHome(){clearInterval(coverT);const b=$("#homeBody");
   if(LAYOUT==="shared"){drawArc($("#sharedArc"),{multi:S.habits.map(h=>({prog:calc(h).prog,color:h.color,label:short(h.name)}))});
     $("#sharedLeg").innerHTML="";void S.habits.map(h=>`<span><i style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${h.color};margin-left:4px"></i>${esc(short(h.name))} · ${calc(h).prog}</span>`).join("")}
   else S.habits.forEach(h=>drawArc($("#mini_"+h.id),{single:{prog:calc(h).prog},mini:true}));
-  window._mc=setTimeout(dailyFlow,400);
+  if(!quiet)window._mc=setTimeout(dailyFlow,400);
 }
 /* الأيام اللي ما تعبّت: بنسأل عن كل يوم لحاله قبل أي حساب */
 const BACK_MAX=14;
@@ -418,7 +536,7 @@ function missCheck(){const t=today();
     openSheet(`<div style="text-align:center"><div style="font-size:38px;font-weight:700;color:${Z(1)}" dir="ltr">−${back}</div><h3>رجعت ${back===1?"خطوة":back+" خطوات"} بـ«${nm}»</h3>
       <p class="muted" style="font-size:14px;margin:8px 0 6px">فوّتت ${c.missedRun===2?"يومين":c.missedRun+" أيام"} ورا بعض، فنقطتك رجعت من يوم ${was} ليوم ${c.prog}.${za<zb?` ورجعت لـ${ZN[za]}.`:""}</p>
       <p style="font-size:14px;margin-bottom:6px">بس ما رجعت للصفر. كل يوم بتشيّك فيه بيرجّعك لقدّام.</p>
-      ${h.buddy?`<p class="muted" style="font-size:13px;margin-bottom:10px">وصل تنبيه لشريكك ${esc(h.buddy)}</p>`:""}</div>
+      ${(h.partners||[]).length?`<p class="muted" style="font-size:13px;margin-bottom:10px">شركاؤك بهالعادة بيشوفوا تقدّمك، يلا رجّع حالك معهن.</p>`:""}</div>
       <button class="btn" onclick="closeSheet();openDetail('${h.id}',${was})">شوف وين صرت</button>`);return}}
 function greet(){const h=new Date().getHours();return h<12?"صباح الخير":h<18?"يومك سعيد":"مساء الخير"}
 function short(s){return s.length>12?s.slice(0,11)+"…":s}
@@ -459,7 +577,8 @@ function guardCheck(id,hard){const h=S.habits.find(x=>x.id===id);h.gw=h.gw||{};c
 /* ---------- التفاصيل ---------- */
 let detailFrom=null;
 function openDetail(id,from){curId=id;detailFrom=from!=null?from:null;go("detail");renderDetail()}
-function renderDetail(){const h=S.habits.find(x=>x.id===curId);if(!h){go("home");return}
+function renderDetail(quiet){const h=S.habits.find(x=>x.id===curId);if(!h){go("home");return}
+  const pts=h.partners||[];
   const st=habitState(h);$("#dTitle").textContent=h.name;
   const z=st.z;const t=today();
   let key=z;if(z===1&&st.prog>=3&&st.prog<=10)key="1h";
@@ -476,7 +595,8 @@ function renderDetail(){const h=S.habits.find(x=>x.id===curId);if(!h){go("home")
   const accent=Z(Math.min(z,4));
   let html=`<div class="dhead"><span class="chip" style="background:${accent}">${st.guard?"مرحلة الحارس":ZN[z]}</span>
     <p class="muted" style="font-size:13px;margin-top:4px">${h.type==="neg"?"عادة بتركها":"عادة ببنيها"}${h.when?" · "+esc(h.when):""}</p></div>
-    <svg id="dArc" viewBox="-22 -10 364 212"></svg>`;
+    <svg id="dArc" class="arcbtn" onclick="openHistory()" viewBox="${pts.length?"-30 -44 380 252":"-22 -10 364 212"}"></svg>
+    <p class="muted" style="text-align:center;font-size:12.5px;margin-top:-2px">بلّشت ${dayName(h.start)} · <a href="javascript:openHistory()" style="color:inherit">سجل الأيام ←</a></p>`;
   html=`<div class="dgrid"><div class="dleft">`+html;
   html+=`<div class="msg" style="border-color:${accent}">${msg}${insight?`<br><span class="muted" style="font-size:13px">${insight}</span>`:""}</div>`;
   if(st.guard){h.gw=h.gw||{};const w=guardWeek(h);
@@ -490,11 +610,11 @@ function renderDetail(){const h=S.habits.find(x=>x.id===curId);if(!h){go("home")
   html+=`</div><div class="dright"><div class="stats"><div><b>${st.prog}</b><small>يوم بالعدّاد</small></div><div><b>${st.cur}</b><small>متواصل</small></div><div><b>${Math.max(0,90-st.prog)}</b><small>باقي لـ90</small></div></div>`;
   html+=`<div class="sec-t">إحساسك آخر 7 أيام</div><div class="feelrow">${fs.map(f=>f==null?`<i class="miss"></i>`:`<i style="height:${10+f*9}px;background:${[Z(1),Z(1),Z(2),Z(3),Z(4)][f]}"></i>`).join("")}${'<i style="background:transparent"></i>'.repeat(pad)}</div>`;
   if(h.type==="neg"&&(h.triggers.length||h.alt)){html+=`<div class="sec-t">انتبه لهالمحفّزات</div><div class="trig">${h.triggers.map(x=>`<span>${esc(x)}</span>`).join("")}</div>${h.alt?`<p style="font-size:13.5px;margin-top:8px">بديلك لما يجي الدافع: <b>${esc(h.alt)}</b></p>`:""}`}
-  html+=`<div class="sec-t">شريك الالتزام</div>${h.buddy?`<div class="card" style="padding:10px 12px;font-size:13.5px">شريكك: <b>${esc(h.buddy)}</b> · بيوصله تنبيه إذا فوّتت يومين</div>`:`<button class="btn ghost sm" onclick="buddySheet('${h.id}')">ادعُ شريك برابط</button>`}`;
+  html+=partnerBlock(h);
   html+=`<div class="row2" style="margin-top:14px"><button class="btn ghost sm" onclick="openStory('${h.id}',null)">شارك تقدّمك</button><button class="btn ghost sm" onclick="shareFriends()">شارك مع صحابك</button></div>`;
   html+=`<div class="danger" onclick="delSheet('${h.id}')">حذف العادة</div></div></div>`;
   $("#detailBody").innerHTML=html;
-  drawArc($("#dArc"),{single:{prog:st.prog},anim:true,from:detailFrom,guard:st.guard});detailFrom=null;h.seen=st.prog;save();
+  drawArc($("#dArc"),{single:{prog:st.prog},anim:!quiet,from:detailFrom,guard:st.guard,people:pts.length?peopleOf(h):null});detailFrom=null;h.seen=st.prog;saveLocal();
 }
 function hardDay(id){const h=S.habits.find(x=>x.id===id);const s=hseed(today()+Math.random());
   let tip=h.type==="neg"?pick(NTIPS.concat(TIPS),s):pick(TIPS,s);
@@ -511,8 +631,152 @@ function sendBuddy(id,link){const n=$("#bName").value.trim();if(!n){toast("اك�
   if(navigator.share)navigator.share({text:txt}).catch(()=>{});else{navigator.clipboard&&navigator.clipboard.writeText(txt);toast("انسخ الرابط ✓")}
   closeSheet();renderDetail()}
 function shareFriends(){const t="جرّبوا قعدة 90 · صار بدها قعدة.";if(navigator.share)navigator.share({text:t,url:IG}).catch(()=>{});else window.open(IG,"_blank")}
-function delSheet(id){openSheet(`<h3>حذف العادة؟</h3><p class="muted" style="text-align:center;font-size:14px;margin:6px 0 16px">رح ينمسح كل تقدّمك فيها.</p><div class="row2"><button class="btn ghost" onclick="closeSheet()">لا</button><button class="btn" style="background:${Z(1)}" onclick="delHabit('${id}')">احذفها</button></div>`)}
-function delHabit(id){S.habits=S.habits.filter(x=>x.id!==id);save();closeSheet();go("home")}
+function delSheet(id){const h=S.habits.find(x=>x.id===id);const sh=(h.partners||[]).length;openSheet(`<h3>${sh?"تطلع من الشراكة؟":"حذف العادة؟"}</h3><p class="muted" style="text-align:center;font-size:14px;margin:6px 0 16px">${sh?"رح ينمسح تقدّمك فيها، وشركاؤك بيكمّلوا بلاك.":"رح ينمسح كل تقدّمك فيها."}</p><div class="row2"><button class="btn ghost" onclick="closeSheet()">لا</button><button class="btn" style="background:${Z(1)}" onclick="delHabit('${id}')">احذفها</button></div>`)}
+function delHabit(id){const h=S.habits.find(x=>x.id===id);S.habits=S.habits.filter(x=>x.id!==id);saveLocal();closeSheet();go("home");
+  if(ONLINE&&h&&h.synced&&S.me&&S.me.token)api("/api/leave",{token:S.me.token,habitId:id}).then(sync).catch(()=>{})}
+
+/* ---------- الشراكة ---------- */
+function memberStats(m){const c=calc({start:m.start||today(),log:m.log||{}});const t=today();
+  let w1=0,w2=0;for(let i=1;i<=7;i++){const a=m.log[addDays(t,-i)];const b=m.log[addDays(t,-i-7)];if(a&&a.done)w1++;if(b&&b.done)w2++}
+  const days7=[];for(let i=6;i>=0;i--){const d=addDays(t,-i);const L=(m.log||{})[d];days7.push(d<(m.start||t)?"":L?(L.done?"y":"n"):"")}
+  const doneToday=!!(m.log[t]&&m.log[t].done);
+  const startedRecently=diff(m.start||t,t)<14;
+  const trend=startedRecently?null:w1>w2?"up":w1<w2?"down":"same";
+  return{...c,z:zoneOf(c.prog),doneToday,w1,trend,days7}}
+function peopleOf(h){const me={name:"أنا",prog:calc(h).prog,color:h.color,me:true};
+  return[me].concat((h.partners||[]).map(m=>({name:m.name,prog:memberStats(m).prog,color:m.color}))).map(x=>({label:x.name,prog:x.prog,color:x.color,me:x.me}))}
+function rateTxt(st,g){if(st.prog>=90)return["وصل للراحة الجديدة","var(--z4)"];
+  const w=st.elapsed<7?null:st.w1;if(w==null)return[G(g,"لسا بأول الطريق","لسا بأول الطريق"),"var(--muted)"];
+  if(w>=6)return[G(g,"ماشي منيح","ماشية منيح"),"var(--z4)"];if(w>=4)return[G(g,"شوي مقصّر","شوي مقصّرة"),"var(--z2)"];return[G(g,"مقصّر","مقصّرة"),"var(--z1)"]}
+function trendChip(t){if(!t)return"";const m={up:["عم يزيد ↑","var(--z4)"],down:["عم ينقص ↓","var(--z1)"],same:["ثابت","var(--muted)"]}[t];
+  return`<span class="trend" style="background:${hexA(cssv(m[1].slice(4,-1))||"#888",.15)};color:${m[1]}">${m[0]}</span>`}
+function personRow(name,g,color,st,isMe){const[rt,rc]=rateTxt(st,g);
+  return`<div class="prow"><div class="av" style="background:${color}">${esc(initial(name))}</div>
+    <div class="pi"><b>${esc(name)}${isMe?' <span class="muted" style="font-weight:400;font-size:12px">(إنت)</span>':""}</b>
+      <small>يوم ${st.prog} · ${ZN[st.z]}</small>
+      <div class="bar"><i style="width:${Math.min(100,st.prog/90*100)}%;background:${color}"></i></div>
+      <div class="d7">${st.days7.map(x=>`<i class="${x}"></i>`).join("")}</div></div>
+    <div class="pr"><b style="color:${st.doneToday?"var(--z4)":"var(--muted)"}">${st.doneToday?"✓":"—"}</b><small class="muted">${st.doneToday?"شيّك اليوم":"لسا اليوم"}</small><br><small style="color:${rc}">${rt}</small><br>${trendChip(st.trend)}</div></div>`}
+function verdict(h){const meS=memberStats({start:h.start,log:h.log});const ps=(h.partners||[]).map(m=>({m,st:memberStats(m)}));if(!ps.length)return"";
+  const all=[{n:"إنت",st:meS,me:true}].concat(ps.map(x=>({n:x.m.name,st:x.st,g:x.m.gender})));
+  const todayAll=all.every(x=>x.st.doneToday);const lead=all.slice().sort((a,b)=>b.st.prog-a.st.prog);
+  const yes=all.filter(x=>x.st.doneToday),no=all.filter(x=>!x.st.doneToday);
+  let t=todayAll?"كلكن شيّكتوا اليوم. هيك الشراكة!":!yes.length?"لسا ما حدا شيّك اليوم.":`شيّك اليوم: ${yes.map(x=>esc(x.n)).join("، ")}. ولسا: ${no.map(x=>esc(x.n)).join("، ")}.`;
+  const gap=lead[0].st.prog-lead[lead.length-1].st.prog;
+  if(gap>=3)t+=lead[0].me?` إنت سابق بـ${gap} يوم، شدّ إيدهن معك.`:` ${esc(lead[0].n)} ${G(lead[0].g,"سابق","سابقة")} بـ${gap} يوم.`;
+  else t+=" إنتو ماشيين سوا تقريباً.";
+  return`<div class="verdict">${t}</div>`}
+function partnerBlock(h){const ps=h.partners||[];let o=`<div class="sec-t">${ps.length?"الشراكة بهالعادة":"الشراكة"}</div>`;
+  if(ps.length){o+=`<div class="card" style="padding:4px 12px">${personRow(S.me?S.me.name:"أنا",S.me&&S.me.gender,h.color,memberStats({start:h.start,log:h.log}),true)}${ps.map(m=>personRow(m.name,m.gender,m.color,memberStats(m),false)).join("")}</div>${verdict(h)}`}
+  else o+=`<p class="muted" style="font-size:13px;margin-bottom:6px">اعزم حدا يبني هالعادة معك. بتطلعوا سوا على نفس الدايرة.</p>`;
+  (h.invites||[]).forEach(i=>{o+=`<div class="inv"><span>دعوة ${i.name?"لـ"+esc(i.name):G(i.gender,"لشب","لصبية")} · الرمز <code>${i.code}</code></span><span><a href="javascript:showInvite('${h.id}','${i.id}','${i.code}','${i.gender}','${esc(i.name||"")}')" style="color:inherit">ابعت</a> · <a href="javascript:cancelInvite('${i.id}')" style="color:var(--z1)">إلغاء</a></span></div>`});
+  o+=`<button class="btn ghost sm" style="margin-top:8px" onclick="inviteSheet('${h.id}')">${ps.length?"اعزم شريك تاني":"اعزم شريك"}</button>`;return o}
+let INV=null;
+function inviteSheet(id){if(!ONLINE){openSheet(`<h3>الشراكة</h3><p class="muted" style="text-align:center;font-size:14px;margin:10px 0 16px">الشراكة بتشتغل بس من الرابط المنشور للتطبيق.</p><button class="btn" onclick="closeSheet()">تمام</button>`);return}
+  const h=S.habits.find(x=>x.id===id);if(!h.synced){toast("لحظة، عم نحفظ العادة…");sync();return}
+  INV={id,g:null};openSheet(`<h3>اعزم شريك بـ«${esc(h.name)}»</h3>
+  <p class="muted" style="text-align:center;font-size:13.5px">شب ولا صبية؟ حتى توصل الرسالة صح.</p>
+  <div class="gopt"><button onclick="INV.g='m';selG(this)">شب</button><button onclick="INV.g='f';selG(this)">صبية</button></div>
+  <span class="lbl">اسمه (اختياري)</span><input type="text" id="invName" maxlength="24" placeholder="اكتب الاسم">
+  <button class="btn" id="invOk" style="margin-top:14px" disabled onclick="makeInvite()">جهّز الدعوة</button>`)}
+function selG(b){b.parentNode.querySelectorAll("button").forEach(x=>x.classList.remove("on"));b.classList.add("on");$("#invOk").disabled=false;
+  $("#invName").placeholder=INV.g==="f"?"اكتب اسمها":"اكتب اسمه";$("#invName").previousElementSibling.textContent=INV.g==="f"?"اسمها (اختياري)":"اسمه (اختياري)"}
+async function makeInvite(){$("#invOk").disabled=true;const nm=$("#invName").value.trim();
+  try{const j=await api("/api/invite",{token:S.me.token,habitId:INV.id,gender:INV.g,name:nm});sync();showInvite(INV.id,j.id,j.code,INV.g,nm)}
+  catch(e){$("#invOk").disabled=false;toast(e.message==="full"?"العادة وصلت لأكبر عدد شركاء (8)":"ما زبط، جرّب كمان مرة")}}
+function inviteLink(iid,code){return location.origin+"/?i="+iid+(code?"&c="+code:"")}
+function showInvite(hid,iid,code,g,nm){const h=S.habits.find(x=>x.id===hid);const link=inviteLink(iid);
+  const hi=nm?G(g,"أهلين ","أهلين ")+nm+"، ":"";
+  const msg=hi+G(g,`بدي ياك تشاركني بعادة «${h.name}» على قعدة 90، نبنيها سوا 90 يوم. ادخل عالرابط وحط الرمز اللي رح ابعتلك ياه:`,`بدي ياكي تشاركيني بعادة «${h.name}» على قعدة 90، نبنيها سوا 90 يوم. ادخلي عالرابط وحطي الرمز اللي رح ابعتلك ياه:`);
+  window._invMsg=msg+"\n"+link;window._invCode=code;
+  openSheet(`<h3>الدعوة جاهزة</h3>
+  <p class="muted" style="text-align:center;font-size:13.5px">ابعت الرابط، وبعدين ابعت الرمز لحاله. أو ${G(g,"خليه","خليها")} ${G(g,"يصوّر","تصوّر")} الـQR من موبايلك.</p>
+  <div id="qrBox"></div>
+  <div class="codebig">${code}</div>
+  <div class="row2"><button class="btn" onclick="shareTxt(window._invMsg)">ابعت الرابط</button><button class="btn ghost" onclick="shareTxt(window._invCode)">ابعت الرمز</button></div>
+  <p class="opt-note" style="text-align:center;margin-top:8px">الدعوة لشخص واحد، وبتنتهي بعد 7 أيام</p>
+  <button class="btn ghost sm" style="margin-top:8px" onclick="closeSheet();refresh()">تم</button>`);
+  drawQR($("#qrBox"),inviteLink(iid,code))}
+function drawQR(box,txt){try{const q=qrcode(0,"M");q.addData(txt);q.make();const n=q.getModuleCount(),s=8,cv=document.createElement("canvas");cv.width=cv.height=n*s;const c=cv.getContext("2d");c.fillStyle="#fff";c.fillRect(0,0,n*s,n*s);c.fillStyle="#1f1d1a";
+  for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))c.fillRect(k*s,r*s,s,s);box.innerHTML="";box.appendChild(cv)}catch(e){box.style.display="none"}}
+function shareTxt(t){if(navigator.share)navigator.share({text:t}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast("انتسخ ✓"));}
+async function cancelInvite(id){try{await api("/api/invite/cancel",{token:S.me.token,id})}catch(e){}sync()}
+
+/* ---------- قبول الدعوة ---------- */
+let JI=null;
+async function openJoin(){const inv=S.pendingInvite;go("join");const b=$("#joinBody");b.innerHTML=`<p class="muted" style="text-align:center;margin-top:40px">لحظة…</p>`;
+  try{JI=await api("/api/invite/"+inv.id)}catch(e){JI={state:"none"}}
+  if(JI.state!=="ok"){const t={used:"هالدعوة انستعملت قبل.",expired:"هالدعوة خلصت مدتها. اطلب دعوة جديدة.",locked:"انقفلت الدعوة بعد محاولات غلط كتير. اطلب دعوة جديدة.",none:"ما لقينا هالدعوة."}[JI.state]||"ما لقينا هالدعوة.";
+    b.innerHTML=`<div class="card invcard"><p style="font-size:16px;font-weight:700">${t}</p></div><button class="btn" style="margin-top:14px" onclick="leaveJoin()">كمّل</button>`;return}
+  const g=S.me.gender||JI.gender,fg=JI.fromGender,fn=esc(JI.fromName);
+  b.innerHTML=`<div class="card invcard">
+    <div class="av" style="width:56px;height:56px;font-size:22px;margin:0 auto;background:var(--z4)">${esc(initial(JI.fromName))}</div>
+    <p style="margin-top:10px">${JI.name?`${G(g,"أهلين يا","أهلين يا")} ${esc(JI.name)}، `:""}<b>${fn}</b> ${G(fg,"عازمك","عازمتك")} ${G(g,"تشارك","تشاركي")}${G(fg,"ه","ها")} ب${JI.habit.type==="neg"?"ترك":"بناء"} عادة</p>
+    <p class="hn">${esc(JI.habit.name)}</p>
+    <p class="muted" style="font-size:13px">90 يوم سوا · كل واحد بيشوف تقدّم التاني</p>
+    ${JI.members.length>1?`<p class="muted" style="font-size:12.5px;margin-top:6px">بالعادة هلق: ${JI.members.map(esc).join("، ")}</p>`:""}
+  </div>
+  ${inv.code?"":`<span class="lbl" style="text-align:center">${G(g,"حط","حطي")} الرمز اللي وصلك</span><input type="text" id="jCode" class="codein" maxlength="5" autocomplete="off" oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'');$('#jOk').disabled=this.value.length<5">`}
+  <p id="jErr" style="color:var(--z1);font-size:13px;text-align:center;min-height:18px;margin-top:6px"></p>
+  <button class="btn" id="jOk" ${inv.code?"":"disabled"} onclick="acceptJoin()">قبول الشراكة</button>
+  <button class="btn ghost" style="margin-top:8px" onclick="leaveJoin()">مو هلق</button>`}
+async function acceptJoin(){const inv=S.pendingInvite;const code=inv.code||$("#jCode").value;$("#jOk").disabled=true;
+  try{if(!await ensureToken())throw new Error("net");const j=await api("/api/join",{token:S.me.token,inviteId:inv.id,code,today:today()});
+    S.pendingInvite=null;saveLocal();await sync();burst(50);toast("صرتوا شركاء ✓");openDetail(j.habitId)}
+  catch(e){const m={code:`الرمز غلط. باقيلك ${e.data&&e.data.left} محاولات.`,limit:"عندك 3 عادات. احذف وحدة لتقدر تقبل.",already:"إنت أصلاً بهالشراكة.",full:"الشراكة مليانة.",used:"هالدعوة انستعملت قبل.",expired:"هالدعوة خلصت مدتها.",locked:"انقفلت الدعوة. اطلب دعوة جديدة."}[e.message]||"ما زبط الاتصال، جرّب كمان مرة.";
+    $("#jErr").textContent=m;$("#jOk").disabled=false;if(e.message==="already"){S.pendingInvite=null;saveLocal()}}}
+function leaveJoin(){S.pendingInvite=null;saveLocal();go(S.habits.length?"home":"new");if(!S.habits.length)wizStart()}
+
+/* ---------- شاشة الشراكات ---------- */
+function renderPartners(){const b=$("#partnersBody");const sh=S.habits.filter(h=>(h.partners||[]).length);
+  let o=`<p class="hello">${S.me?`إنت: <b>${esc(S.me.name)}</b> · <a href="javascript:editMe()" style="color:inherit">تعديل</a>`:""}</p>`;
+  if(!sh.length)o+=`<div class="empty card"><p style="font-size:16px;font-weight:700">ما في شراكات لسا</p><p class="muted" style="font-size:14px;margin:6px 0 14px">افتح أي عادة واعزم حدا يبنيها معك. كل عادة إلها شركاؤها.</p>${S.habits.length?S.habits.map(h=>`<button class="btn ghost sm" style="margin-top:6px" onclick="curId='${h.id}';inviteSheet('${h.id}')">اعزم شريك بـ«${esc(h.name)}»</button>`).join(""):""}</div>`;
+  sh.forEach(h=>{o+=`<div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:16px">${esc(h.name)}</b><a href="javascript:openDetail('${h.id}')" class="muted" style="font-size:12.5px;color:inherit">فتح العادة ←</a></div>
+    <small class="muted">${h.type==="neg"?"عادة منتركها سوا":"عادة منبنيها سوا"} · ${h.partners.length+1} أشخاص</small>
+    ${personRow(S.me.name,S.me.gender,h.color,memberStats({start:h.start,log:h.log}),true)}${h.partners.map(m=>personRow(m.name,m.gender,m.color,memberStats(m),false)).join("")}${verdict(h)}</div>`});
+  const solo=S.habits.filter(h=>!(h.partners||[]).length);
+  if(sh.length&&solo.length)o+=`<div class="sec-t">عادات بلا شريك</div>`+solo.map(h=>`<button class="btn ghost sm" style="margin-top:6px" onclick="curId='${h.id}';inviteSheet('${h.id}')">اعزم شريك بـ«${esc(h.name)}»</button>`).join("");
+  b.innerHTML=o}
+function editMe(){openSheet(`<h3>اسمك</h3><input type="text" id="eName" maxlength="24" value="${esc(S.me.name)}" style="margin-top:12px">
+  <div class="gopt"><button class="${S.me.gender==="m"?"on":""}" onclick="S.me.gender='m';this.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('on'));this.classList.add('on')">شب</button><button class="${S.me.gender==="f"?"on":""}" onclick="S.me.gender='f';this.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('on'));this.classList.add('on')">صبية</button></div>
+  <button class="btn" onclick="saveEditMe()">حفظ</button>`)}
+async function saveEditMe(){const n=$("#eName").value.trim();if(n)S.me.name=n;saveLocal();closeSheet();renderPartners();
+  if(ONLINE&&S.me.token)try{await api("/api/profile",{token:S.me.token,name:S.me.name,gender:S.me.gender});sync()}catch(e){}}
+
+/* ---------- سجل الأيام ---------- */
+let HT=null;
+function openHistory(){HT="me";go("history");renderHistory()}
+function renderHistory(){const h=S.habits.find(x=>x.id===curId);if(!h){go("home");return}$("#hTitle").textContent=h.name;
+  const ps=h.partners||[];const m=HT==="me"?{name:S.me?S.me.name:"أنا",start:h.start,log:h.log,color:h.color,ms:h.ms||[],me:true}:(()=>{const p=ps.find(x=>x.uid===HT);return p?{name:p.name,start:p.start||today(),log:p.log||{},color:p.color,ms:p.ms||[],gender:p.gender}:null})();
+  if(!m){HT="me";return renderHistory()}
+  const t=today(),el_=diff(m.start,t)+1,st=calc({start:m.start,log:m.log});
+  let done=0,miss=0,emp=0;for(let i=0;i<el_;i++){const d=addDays(m.start,i);const L=m.log[d];if(L&&L.done)done++;else if(L)miss++;else if(d!==t)emp++}
+  const total=Math.max(90,Math.ceil(el_/10)*10);const fc=[Z(1),Z(1),Z(2),Z(3),Z(4)];
+  let cells="";for(let i=0;i<total;i++){const d=addDays(m.start,i);const L=m.log[d];let cls="f",sty="";
+    if(d<=t){if(L&&L.done){cls="y";sty=`background:${L.feel!=null?fc[L.feel]:m.color}`}else if(L)cls="n";else cls=d===t?"e":"e"}
+    if(d===t)cls+=" t";if([21,40,90].includes(i+1))cls+=" ms";
+    cells+=`<div class="cell ${cls}" style="${sty}" onclick="dayInfo('${d}',${i+1})">${i+1}</div>`}
+  let o="";if(ps.length)o+=`<div class="tabs"><button class="${HT==="me"?"on":""}" onclick="HT='me';renderHistory()">أنا</button>${ps.map(p=>`<button class="${HT===p.uid?"on":""}" onclick="HT='${p.uid}';renderHistory()">${esc(p.name)}</button>`).join("")}</div>`;
+  o+=`<div class="card" style="margin-top:8px"><p style="font-size:14.5px"><b>${m.me?"بلّشت":esc(m.name)+" "+G(m.gender,"بلّش","بلّشت")}</b> ${dayName(m.start)} ${m.start.slice(0,4)}</p>
+    <p class="muted" style="font-size:13px">مرق ${el_} يوم · ${ZN[zoneOf(st.prog)]}</p>
+    <div class="stats" style="margin-bottom:0"><div><b>${done}</b><small>يوم ${m.me?"عملتها":"أنجز"}</small></div><div><b>${miss+emp}</b><small>يوم فايت</small></div><div><b>${st.prog}</b><small>بالعدّاد</small></div></div></div>
+  <div class="cal">${cells}</div>
+  <div class="leg"><span><i style="background:${Z(4)}"></i>عملتها (اللون حسب الإحساس)</span><span><i style="border:1.5px solid ${Z(1)}"></i>ما عملتها</span><span><i style="border:1.5px dashed var(--muted)"></i>ما تعبّى</span><span><i style="outline:2px solid var(--ink)"></i>21 · 40 · 90</span></div>
+  ${m.me?`<p class="muted" style="font-size:12.5px;text-align:center;margin-top:10px">اضغط على أي يوم لتشوف تفاصيله، وبتقدر تعدّل آخر ${BACK_MAX} يوم.</p>`:""}`;
+  $("#historyBody").innerHTML=o}
+let DI=null;
+function dayInfo(d,n){const h=S.habits.find(x=>x.id===curId);const t=today();if(d>t)return;
+  const isMe=HT==="me";const log=isMe?h.log:((h.partners||[]).find(x=>x.uid===HT)||{}).log||{};const L=log[d];
+  const can=isMe&&diff(d,t)<=BACK_MAX;DI={d,feel:null};
+  openSheet(`<p class="muted" style="text-align:center;font-size:12.5px">اليوم ${n} من الرحلة</p><h3>${dayName(d)}</h3>
+  <p style="text-align:center;font-size:15px;margin:8px 0">${L&&L.done?`✓ ${isMe?"عملتها":"أنجزها"}${L.feel!=null?` · كانت <b>${FEELS[L.feel]}</b>`:""}${L.late?' <span class="muted" style="font-size:12px">(تعبّت بعدين)</span>':""}`:L?"✗ ما انعملت":d===t?"لسا ما تشيّك اليوم":"ما تعبّى"}</p>
+  ${can?`<div class="feels" id="diF" style="display:none">${FEELS.map((f,i)=>`<button onclick="DI.feel=${i};this.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('on'));this.classList.add('on');$('#diOk').disabled=false">${feelIcon(i)}${f}</button>`).join("")}</div>
+  <div id="diA" class="row2" style="margin-top:12px"><button class="btn" onclick="$('#diA').style.display='none';$('#diF').style.display='grid';$('#diY').style.display='block'">عملتها</button><button class="btn ghost" onclick="setDay(false)">ما عملتها</button></div>
+  <div id="diY" style="display:none"><button class="btn" id="diOk" disabled onclick="setDay(true)">سجّلها ✓</button></div>`:`<button class="btn ghost" style="margin-top:10px" onclick="closeSheet()">تمام</button>`}`)}
+function setDay(yes){const h=S.habits.find(x=>x.id===curId);const before=calc(h).prog;
+  h.log[DI.d]=yes?{done:true,feel:DI.feel,late:DI.d!==today()}:{done:false};
+  const after=calc(h).prog;const ms=[21,40,90].find(m=>before<m&&after>=m);if(ms&&!(h.ms||[]).includes(ms))h.ms=(h.ms||[]).concat(ms);
+  save();closeSheet();renderHistory();toast("انحفظ ✓")}
 
 /* ---------- معالج الإضافة ---------- */
 let W;const POS=["رياضة 20 دقيقة","قراءة 10 صفحات","حفظ 10 كلمات إنكليزي","مشي يومي","نوم بكير","شرب 8 كاسات مي"];
@@ -548,7 +812,7 @@ function renderWiz(){const n=wizSteps();$("#wizDots").innerHTML=Array.from({leng
 function togTrig(x){const i=W.triggers.indexOf(x);i<0?W.triggers.push(x):W.triggers.splice(i,1);renderWiz()}
 function addTrig(){const v=$("#wTrigX").value.trim();if(v&&!W.triggers.includes(v)){W.triggers.push(v);TRG.includes(v)||TRG.push(v)}renderWiz()}
 function wizDone(){const used=S.habits.map(h=>h.color);const color=HCOL.find(c=>!used.includes(c))||HCOL[0];
-  const h={id:"h"+Date.now().toString(36),name:W.name.trim(),type:W.type,when:W.when.trim(),triggers:W.triggers,alt:W.alt.trim(),start:today(),log:{},color,ms:[],gw:{}};
+  const h={owner:S.me&&S.me.uid,partners:[],invites:[],id:"h"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:W.name.trim(),type:W.type,when:W.when.trim(),triggers:W.triggers,alt:W.alt.trim(),start:today(),log:{},color,ms:[],gw:{}};
   S.habits.push(h);save();openDetail(h.id);burst(20)}
 
 /* ---------- المعالم ---------- */
@@ -718,6 +982,8 @@ function openHelp(){openSheet(`<div class="help"><h3>كيف بتشتغل قعد�
 <p>كل عادة جديدة بتطلّعك من <b>منطقة الراحة</b>. أول 21 يوم إنت بـ<b>منطقة التوتر والخوف</b>، وهي أدق مرحلة، خصوصاً بعد أول 3 لـ4 أيام لما يخف الحماس.</p>
 <p>من يوم 21 لـ40 بتصير بـ<b>منطقة التأقلم</b>: ما في ضيق كبير ولا حماس كبير. من 40 لـ90 بتصير بـ<b>منطقة العادة</b>: جسمك وساعتك متعودين. وبعد 90 بتصير العادة <b>راحتك الجديدة</b>.</p>
 <p>كل يوم بتشيّك وبتقول كيف كانت عليك. وإذا نسيت كم يوم، بنسألك عن كل يوم فايت لحاله لتعبّيه.</p><p><b>ما في صفر</b>: يوم فايت ما بيأثر، بس يومين ورا بعض بيرجّعوك خطوة.</p>
+<p><b>الشراكة</b>: من صفحة أي عادة بتعزم حدا يبني العادة معك. بتبعتله الرابط، وبعدين الرمز لحاله (أو بيصوّر الـQR من موبايلك). لما يقبل، بتطلعوا سوا على نفس الدايرة، وكل واحد بيشوف تقدّم التاني. كل عادة إلها شركاؤها، وزر الشراكات فوق بيجمعهن كلهن.</p>
+<p>اضغط على الدايرة لتشوف <b>سجل الأيام</b>: كل يوم من يوم ما بلّشت، عملتها ولا لا، وكيف كانت عليك.</p>
 <p>العادة السلبية بعد 90 يوم بتدخل <b>مرحلة الحارس</b>: تشييك أسبوعي لأنو العادة القديمة نايمة مو ميتة.</p>
 <p class="muted" style="font-size:12.5px">المرجع: نظرية مناطق اكتساب العادة (21/40/90) من إعداد م. إياد حلوبي، مستندة إلى نموذج مناطق التعلّم (Learning Zone Model) ودراسة Lally وزملائها (2009) عن تكوّن العادات.</p>
 <button class="btn" onclick="closeSheet()">فهمت</button></div>`)}
@@ -730,8 +996,10 @@ function burst(n){const cv=$("#conf"),c=cv.getContext("2d");cv.width=innerWidth;
 
 /* ---------- تشغيل ---------- */
 load();applyTheme();
+(function(){const q=new URLSearchParams(location.search);const i=q.get("i");if(i){S.pendingInvite={id:i,code:(q.get("c")||"").toUpperCase()};saveLocal();history.replaceState(null,"",location.pathname)}})();
 // هالنموذج بيحتفظ بالمعطيات على الجهاز؛ بالنسخة الكاملة بترجع بالإيميل من أي جهاز
-go("cover");
+if(S.pendingInvite&&S.me)openJoin();else if(S.seen&&S.me)go(S.habits.length?"home":"cover");else go("cover");
+sync();
 if("serviceWorker" in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
 // إحصائيات: زيارة مجهولة
 try{if(location.protocol.startsWith("http"))fetch("/api/hit",{method:"POST"}).catch(()=>{})}catch(e){}
