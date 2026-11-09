@@ -1,0 +1,1 @@
+{"name":"qa3da-90","version":"1.0.0","description":"قعدة 90 · اكتساب العادات خلال 90 يوم · إعداد م. إياد حلوبي","main":"server.js","scripts":{"start":"node server.js"},"engines":{"node":">=18"},"dependencies":{"express":"^4.19.2"}}
